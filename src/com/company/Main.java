@@ -21,6 +21,7 @@ public class Main {
 //        statement.execute("INSERT INTO contacts (name, phone, email)" +
 //                " VALUES ('Joe', 50212, 'joe@wp.pl')");
         statement.execute("UPDATE contacts SET phone=99999 WHERE name='Joe'");
+        statement.execute("DELETE FROM contacts WHERE name='Joe' ");
         statement.close();
         conn.close();
     }catch(SQLException e){
