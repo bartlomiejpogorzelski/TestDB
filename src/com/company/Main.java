@@ -13,7 +13,7 @@ public class Main {
 	   //Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Bartek\\IdeaProjects\\TestDB\\testJava.db");
         Statement statement= conn.createStatement();
-        String sql = " CREATE TABLE contacts (name TEXT, phone INTEGER, email TEXT ";
+        String sql = "CREATE TABLE contacts (name TEXT, phone INTEGER, email TEXT)";
         statement.execute(sql);
 
     }catch(SQLException e){
