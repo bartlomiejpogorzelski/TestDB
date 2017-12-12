@@ -15,8 +15,9 @@ public class Main {
         Statement statement= conn.createStatement();
         String sql = "CREATE TABLE IF NOT EXISTS contacts" +
                 " (name TEXT, phone INTEGER, email TEXT)";
-        
         statement.execute(sql);
+        statement.execute("INSERT INTO contacts (name, phone, email)" +
+                " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
 
     }catch(SQLException e){
         System.out.println("Something went wrong " + e.getMessage());
