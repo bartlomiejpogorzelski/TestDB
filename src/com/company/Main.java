@@ -16,10 +16,11 @@ public class Main {
         String sql = "CREATE TABLE IF NOT EXISTS contacts" +
                 " (name TEXT, phone INTEGER, email TEXT)";
         statement.execute(sql);
-        statement.execute("INSERT INTO contacts (name, phone, email)" +
-                " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
-        statement.execute("INSERT INTO contacts (name, phone, email)" +
-                " VALUES ('Joe', 50212, 'joe@wp.pl')");
+//        statement.execute("INSERT INTO contacts (name, phone, email)" +
+//                " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
+//        statement.execute("INSERT INTO contacts (name, phone, email)" +
+//                " VALUES ('Joe', 50212, 'joe@wp.pl')");
+        statement.execute("UPDATE contacts SET phone=99999 WHERE name='Joe'");
         statement.close();
         conn.close();
     }catch(SQLException e){
