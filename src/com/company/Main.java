@@ -20,6 +20,8 @@ public class Main {
                 " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
         statement.execute("INSERT INTO contacts (name, phone, email)" +
                 " VALUES ('Joe', 50212, 'joe@wp.pl')");
+        statement.close();
+        conn.close();
     }catch(SQLException e){
         System.out.println("Something went wrong " + e.getMessage());
     }
