@@ -18,7 +18,8 @@ public class Main {
         statement.execute(sql);
         statement.execute("INSERT INTO contacts (name, phone, email)" +
                 " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
-
+        statement.execute("INSERT INTO contacts (name, phone, email)" +
+                " VALUES ('Joe', 50212, 'joe@wp.pl')");
     }catch(SQLException e){
         System.out.println("Something went wrong " + e.getMessage());
     }
