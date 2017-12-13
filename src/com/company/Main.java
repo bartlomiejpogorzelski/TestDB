@@ -1,10 +1,7 @@
 package com.company;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
 
@@ -20,8 +17,17 @@ public class Main {
 //                " VALUES ( 'Tim', 12212, 'tim@wp.pl')");
 //        statement.execute("INSERT INTO contacts (name, phone, email)" +
 //                " VALUES ('Joe', 50212, 'joe@wp.pl')");
-        statement.execute("UPDATE contacts SET phone=99999 WHERE name='Joe'");
-        statement.execute("DELETE FROM contacts WHERE name='Joe' ");
+//        statement.execute("UPDATE contacts SET phone=99999 WHERE name='Joe'");
+//        statement.execute("DELETE FROM contacts WHERE name='Joe' ");
+        ResultSet results = statement.executeQuery("SELECT * FROM contacts");
+        while(results.next()){
+            System.out.println(results.getString("name")+ " " +
+                                results.getInt("phone")+   " " +
+                                results.getString("email") + " "
+            ) ;
+
+
+        }
         statement.close();
         conn.close();
     }catch(SQLException e){
