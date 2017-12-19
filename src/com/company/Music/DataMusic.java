@@ -1,8 +1,8 @@
 package com.company.Music;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataMusic {
 
@@ -24,8 +24,27 @@ public class DataMusic {
     public static final String ArtistsId="_id";
     public static final String ArtistsName="name";
 
+    public void connection()
 
-    Connection conn = DriverManager.getConnection(MusicConnection);
-    Statement statement= conn.createStatement();
+    {
+        try  {
+        Connection conn = DriverManager.getConnection(MusicConnection);
+        Statement statement = conn.createStatement();
+        ResultSet result;
+        result = statement.executeQuery("SELECT + FROM "+ ArtistsTable);
 
+            List list= new ArrayList();
+        while (result.next()){
+            Artists artist= new Artists();
+            artist.setId(result.getInt(ArtistsId));
+            artist.setName(result.getString(ArtistsName));
+            list.add(artist);
+        }
+
+
+    }
+    catch(SQLException e){
+        System.out.print("error  " + e.getMessage());
+    }
+    }
 }
