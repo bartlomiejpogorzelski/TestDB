@@ -1,9 +1,13 @@
 package com.company.Music;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 public class DataMusic {
 
     public static final String MusicDb= "music.db";
-    public static final String MusicConnection="C:\\Users\\Bartek\\IdeaProjects\\TestDB" + MusicDb;
+    public static final String MusicConnection="jdbc:sqlite:C:\\Users\\Bartek\\IdeaProjects\\TestDB" + MusicDb;
 
     public static final String SongsTable="songs";
     public static final String SongsId="_id";
@@ -21,5 +25,7 @@ public class DataMusic {
     public static final String ArtistsName="name";
 
 
+    Connection conn = DriverManager.getConnection(MusicConnection);
+    Statement statement= conn.createStatement();
 
 }
