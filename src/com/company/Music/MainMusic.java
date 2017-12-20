@@ -7,7 +7,7 @@ public class MainMusic {
 
         DataMusic dMusic = new DataMusic();
 
-        List<Artists> artists = dMusic.connection();
+        List<Artists> artists = dMusic.connection(dMusic.ORDER_BY_DESC);
 
         for( Artists artist:artists){
             System.out.println(artist.getId()+" : "+artist.getName());
