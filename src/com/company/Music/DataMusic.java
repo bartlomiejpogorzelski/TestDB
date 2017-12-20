@@ -23,6 +23,9 @@ public class DataMusic {
     public static final String ArtistsTable = "artists";
     public static final String ArtistsId = "_id";
     public static final String ArtistsName = "name";
+    public static final int INDEX_ARTISTS_ID=1;
+    public static final int INDEX_ARTISTS_NAME=2;
+
 
     public List connection()
         {
@@ -36,8 +39,8 @@ public class DataMusic {
 
             while (result.next()) {
                 Artists artist = new Artists();
-                artist.setId(result.getInt(ArtistsId));
-                artist.setName(result.getString(ArtistsName));
+                artist.setId(result.getInt(INDEX_ARTISTS_ID));
+                artist.setName(result.getString(INDEX_ARTISTS_NAME));
                 list.add(artist);
 
             } }   catch(SQLException e){
