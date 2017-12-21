@@ -7,13 +7,17 @@ public class MainMusic {
 
         DataMusic dMusic = new DataMusic();
 
-        List<Artists> artists = dMusic.connection(dMusic.ORDER_BY_DESC);
+//        List<Artists> artists = dMusic.connection(dMusic.ORDER_BY_DESC);
+//
+//        for( Artists artist:artists){
+//            System.out.println(artist.getId()+" : "+artist.getName());
+//        };
 
-        for( Artists artist:artists){
-            System.out.println(artist.getId()+" : "+artist.getName());
-        };
+        List<String> albumsList=dMusic.querryAlbumsFromArtists("Pink Floyd", dMusic.ORDER_BY_DESC);
 
-
+        for(String albums: albumsList){
+            System.out.println(albums);
+        }
 
     }
 }
