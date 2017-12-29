@@ -118,7 +118,25 @@ public class DataMusic {
 
 
         }
+    public void querySongsMetaData(){
+        String sql ="SELECT * FROM " + SongsTable;
+
+        try{
+            conn=DriverManager.getConnection(MusicConnection);
+            Statement statement= conn.createStatement();
+            ResultSet result= statement.executeQuery(sql);
+
+            ResultSetMetaData metaData = result.getMetaData();
+            int numColums = metaData.getColumnCount();
+            for(int i=1; i<=numColums; i++){
+                System.out.println("Colums"+ i +" in the songs table is names" +metaData.getColumnName(i));
+            }
 
         }
+        catch (SQLException e){
+            e.getMessage();
+        }
+    }
+}
 
 
