@@ -13,11 +13,12 @@ public class MainMusic {
 //            System.out.println(artist.getId()+" : "+artist.getName());
 //        };
 
-        List<String> albumsList=dMusic.querryAlbumsFromArtists("Pink Floyd", dMusic.ORDER_BY_DESC);
-
-        for(String albums: albumsList){
-            System.out.println(albums);
-        }
+//        List<String> albumsList=dMusic.querryAlbumsFromArtists("Pink Floyd", dMusic.ORDER_BY_DESC);
+//
+//        for(String albums: albumsList){
+//            System.out.println(albums);
+//        }
+        dMusic.querySongsMetaData();
 
     }
 }
