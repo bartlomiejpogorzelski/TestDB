@@ -31,6 +31,7 @@ public class DataMusic {
     public static final int ORDER_BY_DESC = 3;
 
     Connection conn;
+
     public List connection(int number) {
         StringBuilder stringBuilder = new StringBuilder("SELECT * FROM ");
         if (number != ORDER_BY_NONE) {
@@ -103,7 +104,7 @@ public class DataMusic {
         }
             List<String> albums = new ArrayList<>();
         try{
-            conn=DriverManager.getConnection(MusicConnection);
+            conn = DriverManager.getConnection(MusicConnection);
             Statement statement= conn.createStatement();
             ResultSet result = statement.executeQuery(stringBuilder.toString());
             while (result.next()) {
@@ -122,7 +123,7 @@ public class DataMusic {
         String sql ="SELECT * FROM " + SongsTable;
 
         try{
-            conn=DriverManager.getConnection(MusicConnection);
+            conn = DriverManager.getConnection(MusicConnection);
             Statement statement= conn.createStatement();
             ResultSet result= statement.executeQuery(sql);
 
@@ -135,6 +136,20 @@ public class DataMusic {
         }
         catch (SQLException e){
             e.getMessage();
+        }
+    }
+    public int getCount(String nameTable){
+        String sql = " SELECT COUNT(*) FROM " + nameTable;
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            int count= result.getInt(1);
+            System.out.println("Liczba: " + count);
+            return count;
+        } catch (SQLException e) {
+            e.getMessage();
+            return -1;
         }
     }
 }
