@@ -30,6 +30,13 @@ public class DataMusic {
     public static final int ORDER_BY_ASC = 2;
     public static final int ORDER_BY_DESC = 3;
 
+    public static final String TABLE_ARTIST_SONG_VIEW="artist_list";
+    public static final String CREATE_ARTIST_FOR_SONG_VIEW="CREATE VIEW IF NOT EXISTS " + TABLE_ARTIST_SONG_VIEW + " AS SELECT " +
+            ArtistsTable+"."+ArtistsName+", "+AlbumsTable+"."+AlbumsName+" AS " + SongsAlbum+", "+ SongsTable+"."+SongsTrack+", "+
+            SongsTable+"."+SongsTitle+ " FROM "+ SongsTable+ " INNER JOIN "+ AlbumsTable+ " ON "+ SongsTable+"."+SongsAlbum+"="+
+            AlbumsTable+"."+AlbumsId + " INNER JOIN "+ ArtistsTable+" ON "+ AlbumsTable+"."+AlbumsArtist+"="+ArtistsTable+"."+ArtistsId+
+            " ORDER BY "+ ArtistsTable+"."+ArtistsName+", "+AlbumsName+"."+AlbumsName+", "+SongsTable+"."+SongsTrack;
+
     Connection conn;
 
     public List connection(int number) {
@@ -139,19 +146,27 @@ public class DataMusic {
         }
     }
     public int getCount(String nameTable){
-        String sql = " SELECT COUNT(*) AS count, MIN(_id) AS min_id FROM " + nameTable;
+        String sql = " SELECT COUNT(*) AS count FROM " + nameTable;
         try {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
             int count= result.getInt("count");
-            int min=result.getInt("min_id");
             System.out.println("liczba: " + count);
-            System.out.println(" Liczbe min: "+min);
             return count;
         } catch (SQLException e) {
             e.getMessage();
             return -1;
+        }
+    }
+    public boolean createViewForSongsArtists(){
+        try {
+            Statement statement = conn.createStatement();
+            statement.execute(CREATE_ARTIST_FOR_SONG_VIEW);
+            return true;
+        } catch (SQLException e) {
+            System.out.println("View failed" + e.getMessage());
+            return false;
         }
     }
 }

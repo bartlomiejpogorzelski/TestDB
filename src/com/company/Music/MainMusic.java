@@ -21,6 +21,6 @@ public class MainMusic {
         dMusic.querySongsMetaData();
 
         dMusic.getCount("songs");
-
+        dMusic.createViewForSongsArtists();
     }
 }
