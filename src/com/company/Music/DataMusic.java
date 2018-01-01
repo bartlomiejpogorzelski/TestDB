@@ -139,13 +139,15 @@ public class DataMusic {
         }
     }
     public int getCount(String nameTable){
-        String sql = " SELECT COUNT(*) FROM " + nameTable;
+        String sql = " SELECT COUNT(*) AS count, MIN(_id) AS min_id FROM " + nameTable;
         try {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
-            int count= result.getInt(1);
-            System.out.println("Liczba: " + count);
+            int count= result.getInt("count");
+            int min=result.getInt("min_id");
+            System.out.println("liczba: " + count);
+            System.out.println(" Liczbe min: "+min);
             return count;
         } catch (SQLException e) {
             e.getMessage();
