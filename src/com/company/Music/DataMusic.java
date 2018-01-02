@@ -37,6 +37,9 @@ public class DataMusic {
             AlbumsTable+"."+AlbumsId + " INNER JOIN "+ ArtistsTable+" ON "+ AlbumsTable+"."+AlbumsArtist+"="+ArtistsTable+"."+ArtistsId+
             " ORDER BY "+ ArtistsTable+"."+ArtistsName+", "+AlbumsName+"."+AlbumsName+", "+SongsTable+"."+SongsTrack;
 
+    public static final String QUERRY_VIEW_SONG_INFO="SELECT "+ ArtistsName+", "+SongsAlbum+", "+SongsTrack+
+            " FROM " + TABLE_ARTIST_SONG_VIEW+ " WHERE " + SongsTitle+" = ";
+
     Connection conn;
 
     public List connection(int number) {
